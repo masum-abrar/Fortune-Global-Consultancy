@@ -11,17 +11,17 @@ const Navbar = () => {
   const translations = {
     en: {
       location: "Zhenjiang, China",
-      phone: "+123 456 7890",
-      weChat: "+987 654 3210",
+      phone: "+880 188 660 458",
+      weChat: "+861 755 503 0290",
       home: "Home",
       universities: "Universities",
-      aboutUs: "About Us",
+      aboutUs: "About FG",
       applyNow: "Apply Now",
     },
     ru: {
       location: "Чжэньцзян, Китай",
-      phone: "+123 456 7890",
-      weChat: "+987 654 3210",
+      phone: "+880 188 660 458",
+      weChat: "+861 755 503 0290",
       home: "Главная",
       universities: "Университеты",
       aboutUs: "О нас",
