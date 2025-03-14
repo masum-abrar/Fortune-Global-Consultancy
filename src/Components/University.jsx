@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaGraduationCap, FaGlobe, FaFlask, FaBriefcase, FaBook } from 'react-icons/fa';
 
@@ -118,9 +119,11 @@ const University = () => {
 
       {/* Show All Universities Button */}
       <div className="mt-12 text-center">
-        <button className="px-8 py-3 bg-gradient-to-r from-green-600 to-green-400 text-white font-semibold rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+       <Link href="/AllUniversity">
+       <button className="px-8 py-3 bg-gradient-to-r from-green-600 to-green-400 text-white font-semibold rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
           Show All Universities
         </button>
+       </Link>
       </div>
     </div>
   );
