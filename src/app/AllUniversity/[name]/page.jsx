@@ -1,5 +1,5 @@
 
-import { useParams } from 'react-router-dom';
+
 import { FaGlobe } from 'react-icons/fa';
  // Import the university list
 const universities = [
@@ -153,7 +153,7 @@ const universities = [
 ];
 
 const UniversityDetail = ({params}) => {
-    const { name } = useParams(); // Get the university name from the URL
+    // Get the university name from the URL
 
     // Find the university by name
     const university = universities.find((uni) => uni.name === decodeURIComponent(name));
