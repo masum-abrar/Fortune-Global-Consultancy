@@ -195,26 +195,28 @@ const Page = () => {
                 </div>
 
                 {/* Universities Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {universities.map((university, index) => (
-                <Link key={index} href={`/AllUniversity/${encodeURIComponent(university.name)}`}>
-                    <div className="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer">
-                        <div className="relative h-60">
-                            <img src={university.image} alt={university.name} className="w-full h-full object-cover" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                            <div className="absolute bottom-4 left-4 bg-green-500 text-white text-sm font-semibold px-3 py-1 rounded-full flex items-center space-x-2">
-                                <FaGlobe className="w-4 h-4" />
-                                <span>{university.location}</span>
-                            </div>
-                        </div>
-                        <div className="p-6">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{university.name}</h3>
-                            <p className="text-gray-700 mb-4">{university.description}</p>
-                        </div>
+              {/* Universities Grid */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {currentUniversities.map((university, index) => (
+        <Link key={index} href={`/AllUniversity/${encodeURIComponent(university.name)}`}>
+            <div className="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <div className="relative h-60">
+                    <img src={university.image} alt={university.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 bg-green-500 text-white text-sm font-semibold px-3 py-1 rounded-full flex items-center space-x-2">
+                        <FaGlobe className="w-4 h-4" />
+                        <span>{university.location}</span>
                     </div>
-                </Link>
-            ))}
-        </div>
+                </div>
+                <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{university.name}</h3>
+                    <p className="text-gray-700 mb-4">{university.description}</p>
+                </div>
+            </div>
+        </Link>
+    ))}
+</div>
+
 
                 {/* Pagination Controls */}
                 <div className="flex justify-center space-x-4 mt-8">

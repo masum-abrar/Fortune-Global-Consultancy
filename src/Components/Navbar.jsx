@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FaWeixin, FaPhoneAlt, FaMapMarkerAlt, FaBars, FaTimes } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -78,7 +79,10 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-gray-700 font-medium">
             <a href="#" className="hover:text-green-500 transition">{translations[language].home}</a>
-            <a href="#" className="hover:text-green-500 transition">{translations[language].universities}</a>
+            <Link href="/AllUniversity" className="hover:text-green-500 transition">
+  {translations[language].universities}
+</Link>
+
             <a href="#" className="hover:text-green-500 transition">{translations[language].aboutUs}</a>
           </nav>
 
@@ -104,7 +108,10 @@ const Navbar = () => {
         >
           <nav className="flex flex-col items-center space-y-4 text-gray-700 font-medium">
             <a href="#" className="hover:text-green-500 transition">{translations[language].home}</a>
-            <a href="#" className="hover:text-green-500 transition">{translations[language].universities}</a>
+            <Link href="/AllUniversity" className="hover:text-green-500 transition">
+  {translations[language].universities}
+</Link>
+
             <a href="#" className="hover:text-green-500 transition">{translations[language].aboutUs}</a>
             <button className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition">
               {translations[language].applyNow}
