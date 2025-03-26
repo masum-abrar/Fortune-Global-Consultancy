@@ -1,6 +1,8 @@
+'use client'
+import Navbar from '@/Components/Navbar';
+import { useParams } from 'next/navigation';
 
-
-import { FaGlobe } from 'react-icons/fa';
+import { FaGlobe, FaBookOpen, FaArrowLeft, FaPhone, FaEnvelope, FaUniversity } from 'react-icons/fa';
  // Import the university list
 const universities = [
     {
@@ -152,45 +154,66 @@ const universities = [
     }
 ];
 
-const UniversityDetail = ({params}) => {
-    // Get the university name from the URL
-
-    // Find the university by name
-    const university = universities.find((uni) => uni.name === decodeURIComponent(name));
+const UniversityDetail = () => {
+    const params = useParams();
+    const universityName = decodeURIComponent(params.name);
+    const university = universities.find((uni) => uni.name === universityName);
 
     if (!university) {
-        return <div className="text-center text-2xl font-bold mt-10">University not found</div>;
+        return <div className="text-center text-3xl font-bold mt-10 text-gray-700">University Not Found</div>;
     }
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
-            <div className="relative h-80 rounded-lg overflow-hidden">
-                <img src={university.image} alt={university.name} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
-            <h1 className="text-4xl font-bold text-gray-900 mt-6">{university.name}</h1>
-            <div className="flex items-center text-gray-600 mt-2">
-                <FaGlobe className="w-5 h-5 mr-2 text-green-500" />
-                <span>{university.location}</span>
-            </div>
-            <p className="text-gray-700 mt-4">{university.description}</p>
+      <div>
+            <Navbar/>
+          <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6 mt-14">
+         
+               
+        
+         <div className="max-w-4xl w-full bg-white shadow-xl rounded-3xl overflow-hidden">
+             {/* Image Section */}
+             <div className="relative h-96">
+                 <img src={university.image} alt={university.name} className="w-full h-full object-cover" />
+                 <div className="absolute inset-0 bg-black/40 "></div>
+                 <h1 className="absolute bottom-6 left-6 text-4xl font-bold text-white drop-shadow-lg">
+                     {university.name}
+                 </h1>
+             </div>
 
-            <h2 className="text-2xl font-semibold text-gray-900 mt-6">Subjects Offered</h2>
-            <div className="flex flex-wrap gap-2 mt-2">
-                {university.subjects.map((subject, idx) => (
-                    <span key={idx} className="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">
-                        {subject}
-                    </span>
-                ))}
-            </div>
+             {/* Content Section */}
+             <div className="p-8">
+                 <div className="flex items-center space-x-3 text-gray-600">
+                     <FaGlobe className="text-green-500 w-5 h-5" />
+                     <span className="text-lg">{university.location}</span>
+                 </div>
+                 
+                 <p className="text-gray-700 mt-4 leading-relaxed">{university.description}</p>
 
-            <button
-                onClick={() => window.history.back()}
-                className="mt-6 bg-green-500 text-white px-5 py-2 rounded-full hover:bg-green-600 transition"
-            >
-                Back to List
-            </button>
-        </div>
+                 {/* Subjects */}
+                 <h2 className="text-2xl font-semibold text-gray-900 mt-6 flex items-center">
+                     <FaBookOpen className="text-green-500 w-6 h-6 mr-2" />
+                     Subjects Offered
+                 </h2>
+                 <div className="flex flex-wrap gap-3 mt-4">
+                     {university.subjects.map((subject, idx) => (
+                         <span key={idx} className="bg-green-100 text-green-800 text-sm font-medium px-4 py-2 rounded-lg shadow">
+                             {subject}
+                         </span>
+                     ))}
+                 </div>
+
+                 {/* Back Button */}
+                 <button
+                     onClick={() => window.history.back()}
+                     className="mt-6 flex items-center space-x-2 bg-green-500 text-white px-5 py-3 rounded-lg hover:bg-green-600 transition-all duration-300 shadow-lg"
+                 >
+                     <FaArrowLeft className="w-5 h-5" />
+                     <span>Back to List</span>
+                 </button>
+             </div>
+         </div>
+     </div>
+      </div>
     );
 };
 
