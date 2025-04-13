@@ -6,12 +6,14 @@ import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
 import University from "@/Components/University";
 import UniversityPartner from "@/Components/UniversityPartner";
+import { LanguageProvider } from "@/LanguageContext";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="">
-   <div className="">
+ <LanguageProvider>
+ <div className="">
 <Navbar/>
    </div>
    <div className="">
@@ -36,6 +38,7 @@ export default function Home() {
    <div>
     <Footer/>
    </div>
+ </LanguageProvider>
     </div>
   );
 }

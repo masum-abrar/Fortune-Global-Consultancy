@@ -1,7 +1,8 @@
 'use client';
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import { LanguageContext } from '@/LanguageContext';// Import the language context
 
 const reviews = [
   {
@@ -31,6 +32,28 @@ const reviews = [
 ];
 
 const ClientReview = () => {
+  const { language } = useContext(LanguageContext); // Get the current language from the context
+
+  // Define translations for English, Bangla, and Russian
+  const translations = {
+    en: {
+      heading: "Client Reviews",
+      subheading: "Hear what our happy clients have to say about our services.",
+      button: "View All Reviews",
+    },
+    bn: {
+      heading: "ক্লায়েন্ট রিভিউ",
+      subheading: "আমাদের সেবা সম্পর্কে আমাদের খুশি ক্লায়েন্টদের কথা শুনুন।",
+      button: "সব রিভিউ দেখুন",
+    },
+    ru: {
+      heading: "Раскрываем Ваш Потенциал",
+      subheading:
+        "В FORTUNE GLOBAL EDU мы помогаем студентам достичь мечты об образовании и карьере. Наши эксперты консультируют по вопросам студенческих виз, работы за границей и подбирают индивидуальные образовательные маршруты.",
+      button: "Узнать больше",
+    },
+  };
+
   return (
     <div className="py-16 bg-gradient-to-r from-green-50 to-gray-100 relative overflow-hidden">
       {/* Floating Bubbles */}
@@ -52,47 +75,43 @@ const ClientReview = () => {
 
       {/* Heading */}
       <div className="text-center mb-12 relative z-10">
-  <h2 className="text-3xl lg:text-6xl font-extrabold text-gray-900 mb-6 relative inline-block">
-    <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-green-700">
-      Client Reviews
-    </span>
-    {/* Enhanced Double Wavy Underline */}
-    <svg
-      className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-[220px] lg:w-[400px] h-10 wavy-underline"
-      viewBox="0 0 220 50"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <linearGradient id="underline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#10b981" /> {/* Green-500 */}
-          <stop offset="100%" stopColor="#059669" /> {/* Green-700 */}
-        </linearGradient>
-      </defs>
-      {/* First Layer (Bottom) */}
-      <path
-        d="M0,40 C50,15 150,60 220,40"
-        stroke="rgba(16,185,129,0.3)"
-        strokeWidth="8"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Second Layer (Top) */}
-      <path
-        d="M0,30 C50,10 150,50 220,30"
-        stroke="url(#underline-gradient)"
-        strokeWidth="5"
-        fill="none"
-        strokeLinecap="round"
-      />
-    </svg>
-  </h2>
-  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-    Hear what our happy clients have to say about our services.
-  </p>
-</div>
-
-
+        <h2 className="text-3xl lg:text-6xl font-extrabold text-gray-900 mb-6 relative inline-block">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-green-700">
+            {translations[language].heading} {/* Use the correct language string */}
+          </span>
+          {/* Enhanced Double Wavy Underline */}
+          <svg
+            className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-[220px] lg:w-[400px] h-10 wavy-underline"
+            viewBox="0 0 220 50"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="underline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#10b981" /> {/* Green-500 */}
+                <stop offset="100%" stopColor="#059669" /> {/* Green-700 */}
+              </linearGradient>
+            </defs>
+            <path
+              d="M0,40 C50,15 150,60 220,40"
+              stroke="rgba(16,185,129,0.3)"
+              strokeWidth="8"
+              fill="none"
+              strokeLinecap="round"
+            />
+            <path
+              d="M0,30 C50,10 150,50 220,30"
+              stroke="url(#underline-gradient)"
+              strokeWidth="5"
+              fill="none"
+              strokeLinecap="round"
+            />
+          </svg>
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          {translations[language].subheading} {/* Use the correct language string */}
+        </p>
+      </div>
 
       {/* Reviews Grid */}
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6 relative z-10">
@@ -156,7 +175,7 @@ const ClientReview = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          View All Reviews
+          {translations[language].button} {/* Use the correct language string */}
         </motion.button>
       </div>
     </div>
